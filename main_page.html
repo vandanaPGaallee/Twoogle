@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Search Results</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/main_page.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/main_page.js"></script>
+</head>
+<body>
+
+<div class="container" style = "width:90%">
+  <div class="topnav">
+  
+  <div class="search-container">
+      <a class="heading" href="#head"><b>TWOOGLE</b></a>
+      <input id="search_panel" type="text" placeholder="Search.." size = 50 name="search" />
+      <button onclick="SearchResults('search_panel', 'query')" ><i  class="fa fa-search"></i></button>
+  </div>
+   <a  href="#home" onclick="document.location.href = 'index.html'">Home</a>
+  <a class="active" href="#search">Search</a>
+  <a href="#Dashboard" onclick="openDashboard()">Dashboard</a>
+</div>
+  <div class="row" >
+    <div class="col-sm-2" style="margin:7px; background-color: white">
+      <h3><b>Filters</b></h3>
+        <form>
+          <div class="form-group">
+            <label for="sel1">Topic:</label>
+            <select class="form-control" id="sel1" onchange="ApplyFilter(id,'topic')">
+              <option></option>
+              <option>Environment</option>
+              <option>Crime</option>
+              <option>Social Unrest</option>
+              <option>Politics</option>
+              <option> Infrastructure</option>
+            </select>
+            <br>
+            <label for="sel1">Location:</label>
+            <select class="form-control" id="sel2" onchange="ApplyFilter(id,'city')">
+              <option></option>
+              <option>Mexico city</option>
+              <option>NYC</option>
+              <option>Delhi</option>
+              <option>Bangkok</option>
+              <option>Paris</option>
+            </select>
+            <br>
+            <label for="sel1">Language:</label>
+            <select class="form-control" id="sel3" onchange="ApplyFilter(id,'lang')">
+              <option></option>
+              <option>English</option>
+              <option>French</option>
+              <option>Thai</option>
+              <option>Hindi</option>
+              <option>Spanish</option>
+            </select>
+            <br>
+            <label for="sel1">Sort By:</label>
+            <select class="form-control" id="sel4">
+              <option>Popularity</option>
+            </select>
+          </div>
+
+          
+        </form>
+    </div>
+    <div id="tweets" class="col-sm-6" style="margin: 7px; background-color:white">
+      
+    </div>
+    <div id="trends" class="col-sm-3" style="margin: 7px; background-color:white">
+        
+    </div>
+</div>
+
+</body>
+</html>

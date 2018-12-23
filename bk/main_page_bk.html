@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>BBootsttstrapap ExamExamplle</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="styles/main_page.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/main_page.js"></script>
+  <script type="text/javascript">
+    window.onload = function(){
+      if(Boolean(window.location.search)){
+        var data = window.location.search.substring(1);
+        data = data.split("&").filter(x => x.split("=")[0] === "query")[0]
+        if(Boolean(data)){
+          data = data.split("=");
+          document.getElementById("search-text").value = data[1];
+          // write code here to make api call to fetch tweets from api
+        }
+      }
+    }
+    
+    fetch("https://a0de8f71.ngrok.io/trending").then(x => x.json()).then(y => {
+      document.getElementById("trending").innerHTML = y.map(data => {
+        return `<div> ${data.label} => ${data.value}</div>`
+      }).join("");
+    })
+    
+    function openDashboard(){
+      var query = document.getElementById("search-text").value;
+      window.location.replace("dashboard.html?query="+query);
+    }
+  </script>
+</head>
+<body>
+
+<div class="container" >
+  <div class="topnav">
+
+  <div class="search-container">
+    <form>
+      <input id="search-text" type="text" placeholder="Search.." size = 50 name="search">
+      <button type="submit"><i class="fa fa-search"></i></button>
+    </form>
+  </div>
+   <a class="active" href="#home">Home</a>
+  <a href="#about" onclick="openDashboard()">Dashboard</a>
+  <a href="#contact">About</a>
+</div>
+  <div class="row" >
+    <div class="col-sm-2" style="margin:7px;width: 165px; background-color: white">
+      <h3>Filters</h3>
+        <form>
+          <div class="form-group">
+            <label for="sel1">Topic:</label>
+            <select class="form-control" id="sel1">
+              <option></option>
+              <option>Environment</option>
+              <option>Crime</option>
+              <option>Social Unrest</option>
+              <option>Politics</option>
+              <option> Infrastructure</option>
+            </select>
+            <br>
+            <label for="sel1">Location:</label>
+            <select class="form-control" id="sel1">
+              <option></option>
+              <option>Mexico city</option>
+              <option>Newyor</option>
+              <option>Social Unrest</option>
+              <option>Politics</option>
+              <option> Infrastructure</option>
+            </select>
+            <br>
+            <label for="sel1">Language:</label>
+            <select class="form-control" id="sel1">
+              <option></option>
+              <option>English</option>
+              <option>French</option>
+              <option>Thai</option>
+              <option>Hindi</option>
+              <option>Spanish</option>
+            </select>
+            <br>
+            <label for="sel1">Sort By:</label>
+            <select class="form-control" id="sel1">
+              <option>Popularity</option>
+              <option>Latest</option>
+            </select>
+            <br>
+            
+          </div>
+
+          
+        </form>
+        
+        <h3> Trending</h3>
+        <div id="trending">
+          
+        </div>
+    </div>
+    <div id="tweets" class="col-sm-4" style="margin: 7px;width: 550px; background-color:white">
+      
+    </div>
+    <button onclick="getJSON()">Click me</button>
+</div>
+
+</body>
+
+</html>

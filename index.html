@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="utf-8">
+    <title>Welcome to twoogle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container" style="width: 100% !important;margin: 0px !important">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="row">
+                <div id="header" class="text-center">
+                    <h1 style="font-size:90px;font-style:oblique">Twoogle</h>
+                </div>
+                <form role="form" id="form-buscar">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input id="search-text" class="form-control" type="text" name="search" placeholder="Search..." required />
+                            <span class="input-group-btn">
+<a id="search" class="btn btn-success" href="#" onclick="startSearch()">
+<i class="glyphicon glyphicon-search" aria-hidden="true"></i> Search
+</a>
+</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+            <footer>
+  <p><b>Contributors: Vaishnavi, Deboshree, Vandana, Monisha</b> </p>
+</footer>
+</body>
+<script type="text/javascript">
+	function startSearch(){
+		var searchText = document.getElementById("search-text").value;
+		window.location.replace("main_page.html?query=" + searchText);
+	}
+</script>
+
+</html>
